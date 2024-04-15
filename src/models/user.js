@@ -37,7 +37,7 @@ const { mongoose } = require('../configs/dbConnection')
 }
 /* ------------------------------------------------------- */
 
-const userSchema= new mongoose.Schema({
+const UserSchema= new mongoose.Schema({
     username:{
         type:String,
         trim:true,
@@ -68,7 +68,22 @@ const userSchema= new mongoose.Schema({
         required:true,
         trim:true
     },
+    isActive:{
+        type:Boolen,
+        default:true
+    },
+    isStaff:{
+        type:Boolen,
+        default:false
+    },
+    isAdmin:{
+        type:Boolen,
+        default:false
+    },
 },{
     collection:'users',
     timestamps:true
-})
+});
+//*  exports
+
+module.exports=mongoose.model('User',UserSchema)
