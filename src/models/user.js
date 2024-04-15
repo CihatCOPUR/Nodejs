@@ -3,8 +3,7 @@
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 const { mongoose } = require('../configs/dbConnection')
-/* ------------------------------------------------------- 
-
+/* ------------------------------------------------------- *
 {
     "username": "admin",
     "password": "aA*123456",
@@ -36,54 +35,64 @@ const { mongoose } = require('../configs/dbConnection')
     "isAdmin": false
 }
 /* ------------------------------------------------------- */
+// User Model:
 
-const UserSchema= new mongoose.Schema({
-    username:{
-        type:String,
-        trim:true,
-        required:true,
-        unique:true,
-        index:true
-    },
-    password:{
-        type:String,
-        trim:true,
-        required:true
-    },
-    email:{
-        type:String,
-        trim:true,
-        unique:true,
-        required:true,
-        index:true
+const UserSchema = new mongoose.Schema({
 
+    username: {
+        type: String,
+        trim: true,
+        required: true,
+        unique: true,
+        index: true
     },
-    firstName:{
-        type:String,
-        required:true,
-        trim:true
-    },
-    lastName:{
-        type:String,
-        required:true,
-        trim:true
-    },
-    isActive:{
-        type:Boolen,
-        default:true
-    },
-    isStaff:{
-        type:Boolen,
-        default:false
-    },
-    isAdmin:{
-        type:Boolen,
-        default:false
-    },
-},{
-    collection:'users',
-    timestamps:true
-});
-//*  exports
 
-module.exports=mongoose.model('User',UserSchema)
+    password: {
+        type: String,
+        trim: true,
+        required: true
+    },
+
+    email: {
+        type: String,
+        trim: true,
+        required: true,
+        unique: true,
+        index: true
+    },
+
+    firstName: {
+        type: String,
+        trim: true,
+        required: true
+    },
+
+    lastName: {
+        type: String,
+        trim: true,
+        required: true
+    },
+
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
+
+    isStaff: {
+        type: Boolean,
+        default: false,
+    },
+
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+
+}, {
+    collection: 'users',
+    timestamps: true
+})
+
+/* ------------------------------------------------------- */
+// Exports:
+module.exports = mongoose.model('User', UserSchema)
